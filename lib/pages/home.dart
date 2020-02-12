@@ -13,7 +13,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
 
-    data = ModalRoute.of(context).settings.arguments;
+    data = data.isNotEmpty ? data : ModalRoute.of(context).settings.arguments;
 
     return Scaffold(
       backgroundColor: Colors.grey[900],
@@ -32,8 +32,15 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 FlatButton.icon(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/typename');
+                  onPressed: () async {
+                    dynamic result = await Navigator.pushNamed(context, '/typename');
+                    setState(() {
+                      data = {
+                        'username': result['username'],
+                        'level': result['level'],
+                        'kd': result['kd'],
+                      };                      
+                    });
                   },
                   color: Colors.grey[800],
                   icon: Icon(Icons.search),
