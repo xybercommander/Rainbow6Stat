@@ -13,10 +13,12 @@ class _LoadingState extends State<Loading> {
   void initialPlayer() async {
     Player user1 = Player(username: 'xybercommander');
     await user1.getData();
-    Navigator.pushReplacementNamed(context, '/home', arguments: {
-      'username': user1.username,
-      'level': user1.level,
-      'kd': user1.kd
+    Future.delayed(Duration(seconds: 2), () {
+      Navigator.pushReplacementNamed(context, '/home', arguments: {
+        'username': user1.username,
+        'level': user1.level,
+        'kd': user1.kd
+      });
     });
   }
 
