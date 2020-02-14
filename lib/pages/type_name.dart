@@ -21,7 +21,9 @@ class _NameState extends State<Name> {
     Navigator.pop(context, {
       'username': user.username,
       'level': user.level,
-      'kd': user.kd
+      'kd': user.kd,
+      'rank': user.rank,
+      'mmr': user.mmr
     });
   }
 
@@ -100,6 +102,7 @@ class _NameState extends State<Name> {
                     color: Colors.amber
                   ),
                 ),
+                splashColor: Colors.amberAccent,
               ),
             ],
           ),
